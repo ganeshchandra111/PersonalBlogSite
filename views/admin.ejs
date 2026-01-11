@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Comic Sans MS", "Segoe UI", sans-serif;
+        background: #fdf6e3;
+        color: #333;
+      }
+
+      /* Header */
+      body > div:first-of-type {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 0 20px;
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: #ff6f61;
+        text-shadow: 3px 3px 0 #000;
+        margin: 0;
+      }
+
+      /* Article card */
+      .article-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        border: 4px solid #000;
+        border-radius: 20px;
+        padding: 15px 20px;
+        margin: 25px auto 10px;
+        max-width: 900px;
+        box-shadow: 6px 6px 0 #000;
+      }
+
+      .article-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .articleTitle {
+        margin: 0 0 8px 0;
+        font-size: 1.6rem;
+        color: #0077ff;
+      }
+
+      .articleDate {
+        margin: 0;
+        color: #555;
+      }
+
+      /* Buttons */
+      .button-group {
+        display: flex;
+        gap: 10px;
+      }
+
+      .newbutton,
+      .editbutton,
+      .deletebutton,
+      a[href="/"] {
+        display: inline-block;
+        padding: 8px 16px;
+        font-weight: bold;
+        border: 3px solid #000;
+        border-radius: 14px;
+        text-decoration: none;
+        box-shadow: 4px 4px 0 #000;
+        transition: transform 0.1s ease, box-shadow 0.1s ease;
+      }
+
+      .newbutton {
+        background: #2ecc71;
+        color: #fff;
+        font-size: 1.2rem;
+      }
+
+      .editbutton {
+        background: #3498db;
+        color: #fff;
+      }
+
+      .deletebutton {
+        background: #e74c3c;
+        color: #fff;
+      }
+
+      a[href="/"] {
+        background: #bdc3c7;
+        color: #000;
+      }
+
+      .newbutton:hover,
+      .editbutton:hover,
+      .deletebutton:hover,
+      a[href="/"]:hover {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 #000;
+      }
+
+      a[href="/"] {
+        display: block;
+        max-width: 900px;
+        margin: 30px auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Personal blog</h1>
+      <a href="/admin/new" class="newbutton">New</a>
+    </div>
+    <div>
+      <% articles.forEach(article => { %>
+      <div class="article-card">
+        <div class="article-info">
+          <h3 class="articleTitle"><%= article.Title %></h3>
+          <p class="articleDate"><%= article.Date %></p>
+        </div>
+        <div class="button-group">
+          <a href="/admin/update/<%= article.ID %>" class="editbutton">Edit</a>
+          <a href="/admin/delete/<%= article.ID %>" class="deletebutton">Delete</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <a href="/">Back to home</a>
+  </body>
+</html>
